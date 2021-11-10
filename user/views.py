@@ -4,16 +4,16 @@ from .forms import LoginForm, JoinForm, ProfileForm, EditForm
 from django.contrib import auth
 from .models import Profile
 
-# 메인 페이지
+# main page
 def main_page(request):
     return render(request, 'main.html', {})
 
-# 로그인 페이지
+# login page
 def login_page(request):
     login_data = LoginForm()
     return render(request, 'login_page.html', {'login_data':login_data})
 
-# 로그인 유효성 검사
+# Login Validation
 def login_validate(request):
     login_data = LoginForm(request.POST)
 
@@ -24,23 +24,23 @@ def login_validate(request):
                 auth.login(request, user)
                 return redirect('/')
 
-        error_message= '사용자 ID 또는 비밀번호를 잘못입력하였습니다.'
+        error_message= 'You entered an incorrect user ID or password.'
         return render(request, 'login_page.html', {'login_data':login_data,'login_errors':error_message})
-    error_message= '로그인 폼이 이상합니다.개발자에게 연락하시길 바랍니다.'
+    error_message= 'The login form is strange. Please contact the developer.'
     return render(request, 'login_page.html', {'login_data':login_data,'login_errors':error_message})
 
-# 로그아웃   
+# Log out  
 def logout(request):
     auth.logout(request)
     return redirect('/')
 
-# 회원가입 페이지        
+# Membership page       
 def join_page(request):
     if request.method =='POST':
         form_data = JoinForm(request.POST)
         profile_data = ProfileForm(request.POST)
         if form_data.is_valid() and profile_data.is_valid():
-            # get_user_model helper 함수를 통해 모델 클래스 참조
+            # get_user_model helper Reference model classes through functions
             User = auth.get_user_model()
 
             username = form_data.cleaned_data['id']
@@ -51,7 +51,7 @@ def join_page(request):
             email_address = form_data.cleaned_data['email_address']
             phone_number = profile_data.cleaned_data['phone_number']
 
-            # email, phone_number 등록
+            # email, phone_number Enrollment
             user_info = get_object_or_404(User, username=username)
             user_info.email = email_address
             user_info.profile.phone_number = phone_number
@@ -69,12 +69,12 @@ def join_page(request):
 
     return render(request, 'join_page.html', {'join_data':form_data, 'profile_data':profile_data})
 
-# 개인정보 수정 페이지
+# Personal information edit page
 def edit_user_info(request):
-    # User 모델 클래스 가져오기
+    # User import model class
     User = auth.get_user_model()
     
-    # 로그인된 user 정보 가져오기
+    # Get logged in user information
     user_info = get_object_or_404(User, username = request.user.username)    
 
     if request.method =='POST':

@@ -4,7 +4,7 @@
 
 {% if user.is_active %}
 <div id='user_title' style="text-align:center; padding-top:50%;">
-<a id = 'username' ">{{user.username}}</a>님 안녕하세요.
+<a id = 'username' ">{{user.username}}</a>Hello.
 </div>
 <div id='btn_group'>
     <input type="button" class ="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="Edit profile" onclick="location.href='{% url "edit_user_info" %}'" />

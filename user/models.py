@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from django.core.validators import RegexValidator
 
 # 전화번호 유효성 체크
-phone_regex = RegexValidator(r'(\d{3})-?(\d{3,4})-?(\d{4})', message="000-0000-0000형식으로 입력해주세요.")
+phone_regex = RegexValidator(r'(\d{3})-?(\d{3,4})-?(\d{4})', message="000-0000-0000Please enter in the format.")
 
 # Create your models here.
 class Profile(models.Model):

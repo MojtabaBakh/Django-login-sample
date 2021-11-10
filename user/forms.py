@@ -17,21 +17,21 @@ class JoinForm(forms.Form):
     password1 = forms.CharField(label="Password ", min_length=4, max_length=20, widget=forms.PasswordInput)
     password2 = forms.CharField(
         label="Password(again) ", min_length=4, max_length=20, widget=forms.PasswordInput)
-    email_address = forms.EmailField(label="Email Address ", error_messages={'invalid': '정확한 Email 주소를 입력해주세요.'})
+    email_address = forms.EmailField(label="Email Address ", error_messages={'invalid': 'Please enter a valid email address.'})
 
     def clean_id(self):
-        # get_user_model helper 함수를 통해 모델 클래스 참조
+        # get_user_model helper Reference model classes through functions
         User = auth.get_user_model()
         
-        # ID 중복여부
+        # ID Duplicate
         if User.objects.filter(username=self.cleaned_data['id']).exists():
-            raise ValidationError('아이디가 이미 사용중입니다.')
+            raise ValidationError('ID is already in use.')
         return self.cleaned_data['id']
 
     def clean_password2(self):
-        # 패스워드 동일 체크
+        # Check the same password
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
-            raise ValidationError('비밀번호를 동일하게 입력해주십시오.')
+            raise ValidationError('Please enter the same password.')
 
         return self.cleaned_data
 
@@ -46,12 +46,12 @@ class EditForm(forms.Form):
     password1 = forms.CharField(label="Password ", min_length=4, max_length=20, widget=forms.PasswordInput)
     password2 = forms.CharField(
         label="Password(again) ", min_length=4, max_length=20, widget=forms.PasswordInput)
-    email_address = forms.EmailField(label="Email Address ", error_messages={'invalid': '정확한 Email 주소를 입력해주세요.'})
+    email_address = forms.EmailField(label="Email Address ", error_messages={'invalid': 'Please enter a valid email address.'})
 
     def clean_password2(self):
-        # 패스워드 동일 체크
+        # Check the same password
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
-            raise ValidationError('비밀번호를 동일하게 입력해주십시오.')
+            raise ValidationError('Please enter the same password.')
 
         return self.cleaned_data
     

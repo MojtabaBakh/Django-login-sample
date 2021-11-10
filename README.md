@@ -10,7 +10,7 @@ django login page example
 - Front-UI : Material.js
 
 
-#### 1. Github 에서 소스 가져오기
+#### 1. Github get source from
 sssunda's github : <http://github.com/sssunda/django-login-example>
 
 
@@ -19,18 +19,18 @@ $ git clone http://github.com/sssunda/django-login-example
 ```
 
 
-#### 2. 서버 초기화 및 시작
+#### 2. Initialize and start the server
 
 
 ```bash
-# 초기화
+# reset
 bash ./django-login-example/bin/init_app.sh
-# 시작
+# start
 bash ./django-login-example/bin/run_app.sh
 ```
 
-#### [참고]
-##### init_app.sh 소스
+#### [reference]
+##### init_app.sh sauce
 
 ```bash
 # Move to parent directory
@@ -38,20 +38,20 @@ SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $SCRIPT_DIR
 cd ..
 
-# 가상환경 생성 및 진입(서버 초기설정) 
+# Virtual environment creation and entry (server initial setting)
 virtualenv --python=python3.6 myvenv
 
-# 장고 설치
+# install django
 pip install django~=2.0
 
-# DB 초기화
+# DB initialization
 python manage.py migrate
 
-# 웹 서버 실행
+# running web server
 python manage.py runserver
 ```
 
-##### run_app.sh 소스(서버 구동)
+##### run_app.sh Source (server running)
 
 ```bash
 # Move to parent directory
@@ -59,20 +59,20 @@ SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $SCRIPT_DIR
 cd ..
 
-# 가상환경 진입
+# Enter the virtual environment
 source myvenv/bin/activate
 
-# DB 초기화
+# DB initialization
 python manage.py migrate
 
-# 웹 서버 실행
+# running web server
 python manage.py runserver
 ```
 
-명령을 실행한 후, <http://127.0.0.1:8000>에 접속하면 만들어진 웹사이트를 볼 수 있습니다.
 
 
-##### 스크린샷
+
+##### screenshot
 main
 -----
 ![main_page](./img/main_page.png)
