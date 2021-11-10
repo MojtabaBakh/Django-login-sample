@@ -15,7 +15,7 @@ MojtabaBakh's github : <https://github.com/MojtabaBakh/Django-login-sample>
 
 
 ```bash
-$ git clone https://github.com/MojtabaBakh/Django-login-sample
+$ git clone https://github.com/MojtabaBakh/Django-login-sample.git
 ```
 
 
