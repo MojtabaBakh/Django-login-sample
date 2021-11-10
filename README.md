@@ -11,11 +11,11 @@ django login page example
 
 
 #### 1. Github get source from
-sssunda's github : <http://github.com/sssunda/django-login-example>
+MojtabaBakh's github : <https://github.com/MojtabaBakh/Django-login-sample>
 
 
 ```bash
-$ git clone http://github.com/sssunda/django-login-example
+$ git clone https://github.com/MojtabaBakh/Django-login-sample
 ```
 
 
